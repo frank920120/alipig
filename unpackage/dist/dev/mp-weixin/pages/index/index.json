@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "飞猪旅行",
   "usingComponents": {
-    "search": "/pages/index/components/search"
+    "search": "/pages/index/components/search",
+    "ticket": "/pages/index/components/ticket"
   }
 }
