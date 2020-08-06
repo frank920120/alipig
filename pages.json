@@ -3,14 +3,52 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "飞猪旅行"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/strategy/strategy",
+            "style" : {
+				"navigationBarTitleText": "攻略"
+			}
+        }
+        ,{
+            "path" : "pages/my/my",
+            "style" : {
+				"navigationBarTitleText": "我的"
+			}
+        }
+    ],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+	"navigationBarTextStyle": "black",
+	"navigationBarTitleText": "飞猪旅游",
+	"navigationBarBackgroundColor": "#ffd300",
+	"backgroundColor": "#ffd300"
+	},
+	"tabBar":{
+	"selectedColor": "#F76E15",
+	"borderStyle": "black",
+	"backgroundColor": "#FFFFFF",
+	"color": "#333333",
+	"list":[
+		{
+			"pagePath":"pages/index/index",
+			"iconPath":"static/tab/list.png",
+			"selectedIconPath":"static/tab/listb.png",
+			"text":"首页"
+		},
+		{
+			"pagePath":"pages/strategy/strategy",
+			"iconPath":"static/tab/gonglvea.png",
+			"selectedIconPath":"static/tab/gonglveb.png",
+			"text":"攻略"
+		},
+		{
+			"pagePath":"pages/my/my",
+			"iconPath":"static/tab/wodea.png",
+			"selectedIconPath":"static/tab/wodeb.png",
+			"text":"我的"
+		}
+	]
 	}
 }
