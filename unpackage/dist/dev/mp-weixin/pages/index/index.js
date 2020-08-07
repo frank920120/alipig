@@ -133,8 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Search = function Search() {__webpack_require__.e(/*! require.ensure | pages/index/components/search */ "pages/index/components/search").then((function () {return resolve(__webpack_require__(/*! ./components/search.vue */ 17));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Ticket = function Ticket() {__webpack_require__.e(/*! require.ensure | pages/index/components/ticket */ "pages/index/components/ticket").then((function () {return resolve(__webpack_require__(/*! ./components/ticket.vue */ 44));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Classify = function Classify() {__webpack_require__.e(/*! require.ensure | pages/index/components/classify */ "pages/index/components/classify").then((function () {return resolve(__webpack_require__(/*! ./components/classify.vue */ 52));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Content = function Content() {__webpack_require__.e(/*! require.ensure | pages/index/components/content */ "pages/index/components/content").then((function () {return resolve(__webpack_require__(/*! ./components/content.vue */ 60));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Search = function Search() {__webpack_require__.e(/*! require.ensure | pages/index/components/search */ "pages/index/components/search").then((function () {return resolve(__webpack_require__(/*! ./components/search.vue */ 17));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Ticket = function Ticket() {__webpack_require__.e(/*! require.ensure | pages/index/components/ticket */ "pages/index/components/ticket").then((function () {return resolve(__webpack_require__(/*! ./components/ticket.vue */ 44));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Classify = function Classify() {__webpack_require__.e(/*! require.ensure | pages/index/components/classify */ "pages/index/components/classify").then((function () {return resolve(__webpack_require__(/*! ./components/classify.vue */ 52));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Content = function Content() {__webpack_require__.e(/*! require.ensure | pages/index/components/content */ "pages/index/components/content").then((function () {return resolve(__webpack_require__(/*! ./components/content.vue */ 60));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Article = function Article() {__webpack_require__.e(/*! require.ensure | pages/index/components/article */ "pages/index/components/article").then((function () {return resolve(__webpack_require__(/*! ./components/article.vue */ 68));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -155,13 +154,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     Search: Search,
     Ticket: Ticket,
     Classify: Classify,
-    Content: Content },
+    Content: Content,
+    Article: Article },
 
   data: function data() {
     return {
       isFixed: false,
-      rect: '',
-      menutop: '' };
+      rect: "",
+      menutop: "" };
 
   },
   onPageScroll: function onPageScroll(e) {
@@ -170,12 +170,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       this.isFixed = true;
     } else {
       this.isFixed = false;
-
     }
   },
   onLoad: function onLoad() {var _this = this;
     var query = wx.createSelectorQuery();
-    query.select('#boxFixed').boundingClientRect();
+    query.select("#boxFixed").boundingClientRect();
     query.exec(function (res) {
       _this.menutop = res[0].top - 20;
     });
