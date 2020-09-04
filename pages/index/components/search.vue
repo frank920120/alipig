@@ -40,13 +40,13 @@
 		data() {
 			return {
 				banner: [{
-						image: 'http://vue.thexxdd.cn/media/goods/images/gong1_zDxtXVU.jpg'
+						image: 'cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/banners/bannera.webp'
 					},
 					{
-						image: 'http://vue.thexxdd.cn/media/goods/images/gong1_zDxtXVU.jpg'
+						image: 'cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/banners/bannera.webp'
 					},
 					{
-						image: 'http://vue.thexxdd.cn/media/goods/images/gong1_zDxtXVU.jpg'
+						image: 'cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/banners/bannera.webp'
 					}
 				]
 			}
