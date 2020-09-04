@@ -3,7 +3,7 @@
     <Search :banners="banners" />
     <Ticket />
     <Classify />
-    <Content id="boxFixed" :isFixed="isFixed" />
+    <Content id="boxFixed" :isFixed="isFixed" :tab="tab" />
     <Article />
   </view>
 </template>
@@ -28,6 +28,7 @@ export default {
       rect: "",
       menutop: "",
       banners: "",
+      tab: "",
     };
   },
   created() {
@@ -36,6 +37,12 @@ export default {
     banner
       .get()
       .then((res) => (this.banners = res.data))
+      .catch((err) => console.log(err));
+
+    const tab = db.collection("tab");
+    tab
+      .get()
+      .then((res) => (this.tab = res.data))
       .catch((err) => console.log(err));
   },
   onPageScroll(e) {

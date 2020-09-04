@@ -21,44 +21,13 @@
 // 引入攻略列表的数据库接口
 export default {
   name: "tab",
-  props: ["isFixed"],
+  props: {
+    isFixed: Boolean,
+    tab: Array,
+  },
   data() {
     return {
       num: 0,
-      tab: [
-        {
-          name: "出境游",
-          title: "走遍全球",
-        },
-        {
-          name: "国内游",
-          title: "精选路线",
-        },
-        {
-          name: "周边游",
-          title: "暑假红包",
-        },
-        {
-          name: "精选购",
-          title: "免税预购",
-        },
-        {
-          name: "签证/签注",
-          title: "领劵",
-        },
-        {
-          name: "会员",
-          title: "签到",
-        },
-        {
-          name: "每日福利",
-          title: "领里程",
-        },
-        {
-          name: "全部",
-          title: "更多推荐",
-        },
-      ],
     };
   },
   methods: {

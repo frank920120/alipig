@@ -162,7 +162,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       isFixed: false,
       rect: "",
       menutop: "",
-      banners: "" };
+      banners: "",
+      tab: "" };
 
   },
   created: function created() {var _this = this;
@@ -171,6 +172,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     banner.
     get().
     then(function (res) {return _this.banners = res.data;}).
+    catch(function (err) {return console.log(err);});
+
+    var tab = db.collection("tab");
+    tab.
+    get().
+    then(function (res) {return _this.tab = res.data;}).
     catch(function (err) {return console.log(err);});
   },
   onPageScroll: function onPageScroll(e) {
