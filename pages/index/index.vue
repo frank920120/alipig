@@ -4,7 +4,8 @@
     <Ticket />
     <Classify />
     <Content id="boxFixed" :isFixed="isFixed" :tab="tab" />
-    <Article :Articleend="Articleend" />
+    <load-list v-if="loadingList"></load-list>
+    <Article :Articleend="Articleend" v-if="!loadingList" />
   </view>
 </template>
 
@@ -32,22 +33,28 @@ export default {
       banner: "",
       tab: "",
       Articleend: "",
+      loadingList: "true",
     };
   },
   created() {
     let banner = request("banner");
     let tab = request("tab");
     let listing = requestList("recommend");
+    this.loadingList = true;
     Promise.all([banner, tab, listing]).then((res) => {
       this.banner = res[0].data;
       this.tab = res[1].data;
       this.Articleend = res[2].data;
+      this.loadingList = false;
     });
   },
   computed: {
-    ...mapState(["list"]),
+    ...mapState(["list", "navLoading"]),
     count() {
       this.Articleend = this.list.listing;
+    },
+    countLoading() {
+      this.loadingList = this.navLoading.loadingList;
     },
   },
   onPageScroll(e) {

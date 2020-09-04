@@ -163,7 +163,7 @@ var _vuex = __webpack_require__(/*! vuex */ 77); //
 //
 //
 // 引入攻略列表的数据库接口
-var _default = { name: "tab", props: { isFixed: Boolean, tab: Array }, data: function data() {return { num: 0 };}, methods: { handleTabClick: function handleTabClick(index, nav) {var _this = this;this.num = index;(0, _cloudfun.requestList)(nav).then(function (res) {_this.$store.dispatch("changeList", res.data);}).catch(function (err) {return console.log(err);});} } };exports.default = _default;
+var _default = { name: "tab", props: { isFixed: Boolean, tab: Array }, data: function data() {return { num: 0 };}, methods: { handleTabClick: function handleTabClick(index, nav) {var _this = this;this.num = index;this.$store.commit("setLoading", true);(0, _cloudfun.requestList)(nav).then(function (res) {_this.$store.commit("setLists", res.data);_this.$store.commit("setLoading", false);}).catch(function (err) {return console.log(err);});} } };exports.default = _default;
 
 /***/ }),
 

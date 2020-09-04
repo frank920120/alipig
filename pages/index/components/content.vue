@@ -39,9 +39,11 @@ export default {
   methods: {
     handleTabClick(index, nav) {
       this.num = index;
+      this.$store.commit("setLoading", true);
       requestList(nav)
         .then((res) => {
-          this.$store.dispatch("changeList", res.data);
+          this.$store.commit("setLists", res.data);
+          this.$store.commit("setLoading", false);
         })
         .catch((err) => console.log(err));
     },

@@ -7,20 +7,22 @@ const list = {
   listing: [],
 };
 
+const navLoading = {
+  loadingList: "",
+};
 const state = {
   list,
+  navLoading,
 };
 
 const store = new Vuex.Store({
   state,
-  actions: {
-    changeList({ commit }, lists) {
-      commit("setLists", lists);
-    },
-  },
   mutations: {
     setLists(state, lists) {
       state.list = { listing: lists };
+    },
+    setLoading(state, loading) {
+      state.navLoading = { loadingList: loading };
     },
   },
 });

@@ -149,6 +149,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
 var _cloudfun = __webpack_require__(/*! ../../common/cloudfun.js */ 71);
 var _vuex = __webpack_require__(/*! vuex */ 77);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var Search = function Search() {__webpack_require__.e(/*! require.ensure | pages/index/components/search */ "pages/index/components/search").then((function () {return resolve(__webpack_require__(/*! ./components/search.vue */ 35));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Ticket = function Ticket() {__webpack_require__.e(/*! require.ensure | pages/index/components/ticket */ "pages/index/components/ticket").then((function () {return resolve(__webpack_require__(/*! ./components/ticket.vue */ 42));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Classify = function Classify() {__webpack_require__.e(/*! require.ensure | pages/index/components/classify */ "pages/index/components/classify").then((function () {return resolve(__webpack_require__(/*! ./components/classify.vue */ 49));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Content = function Content() {__webpack_require__.e(/*! require.ensure | pages/index/components/content */ "pages/index/components/content").then((function () {return resolve(__webpack_require__(/*! ./components/content.vue */ 56));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Article = function Article() {__webpack_require__.e(/*! require.ensure | pages/index/components/article */ "pages/index/components/article").then((function () {return resolve(__webpack_require__(/*! ./components/article.vue */ 63));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
@@ -166,23 +167,29 @@ var _vuex = __webpack_require__(/*! vuex */ 77);function ownKeys(object, enumera
       menutop: "",
       banner: "",
       tab: "",
-      Articleend: "" };
+      Articleend: "",
+      loadingList: "true" };
 
   },
   created: function created() {var _this = this;
     var banner = (0, _cloudfun.request)("banner");
     var tab = (0, _cloudfun.request)("tab");
     var listing = (0, _cloudfun.requestList)("recommend");
+    this.loadingList = true;
     Promise.all([banner, tab, listing]).then(function (res) {
       _this.banner = res[0].data;
       _this.tab = res[1].data;
       _this.Articleend = res[2].data;
+      _this.loadingList = false;
     });
   },
   computed: _objectSpread({},
-  (0, _vuex.mapState)(["list"]), {
+  (0, _vuex.mapState)(["list", "navLoading"]), {
     count: function count() {
       this.Articleend = this.list.listing;
+    },
+    countLoading: function countLoading() {
+      this.loadingList = this.navLoading.loadingList;
     } }),
 
   onPageScroll: function onPageScroll(e) {

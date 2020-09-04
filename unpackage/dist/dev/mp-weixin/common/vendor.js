@@ -8798,20 +8798,22 @@ var list = {
   listing: [] };
 
 
+var navLoading = {
+  loadingList: "" };
+
 var state = {
-  list: list };
+  list: list,
+  navLoading: navLoading };
 
 
 var store = new _vuex.default.Store({
   state: state,
-  actions: {
-    changeList: function changeList(_ref, lists) {var commit = _ref.commit;
-      commit("setLists", lists);
-    } },
-
   mutations: {
     setLists: function setLists(state, lists) {
       state.list = { listing: lists };
+    },
+    setLoading: function setLoading(state, loading) {
+      state.navLoading = { loadingList: loading };
     } } });var _default =
 
 
