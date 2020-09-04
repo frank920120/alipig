@@ -17,7 +17,7 @@
 		<view>
 			<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true" indicator-color="rgba(255, 255, 255)"
 			 indicator-active-color="#00ff00">
-				<block v-for='(item,index) in banners' :key="index">
+				<block v-for='(item,index) in banner' :key="index">
 					<swiper-item>
 						<view class="swiper-item" id="swiper-item" @click="localCont()">
 							<image :src="item.image" mode="aspectFill" class="imageurl"></image>
@@ -35,7 +35,7 @@
 	export default {
 		name: 'search',
 		props: {
-			banners: Array
+			banner: Array
 		},
 		data() {
 			return {

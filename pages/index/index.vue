@@ -1,6 +1,6 @@
 <template>
   <view>
-    <Search :banners="banners" />
+    <Search :banner="banner" />
     <Ticket />
     <Classify />
     <Content id="boxFixed" :isFixed="isFixed" :tab="tab" />
@@ -14,6 +14,7 @@ import Ticket from "./components/ticket.vue";
 import Classify from "./components/classify.vue";
 import Content from "./components/content.vue";
 import Article from "./components/article.vue";
+import request from "../../common/cloudfun.js";
 export default {
   components: {
     Search,
@@ -27,23 +28,17 @@ export default {
       isFixed: false,
       rect: "",
       menutop: "",
-      banners: "",
+      banner: "",
       tab: "",
     };
   },
   created() {
-    const db = wx.cloud.database();
-    const banner = db.collection("banner");
-    banner
-      .get()
-      .then((res) => (this.banners = res.data))
-      .catch((err) => console.log(err));
-
-    const tab = db.collection("tab");
-    tab
-      .get()
-      .then((res) => (this.tab = res.data))
-      .catch((err) => console.log(err));
+    let banner = request("banner");
+    let tab = request("tab");
+    Promise.all([banner, tab]).then((res) => {
+      this.banner = res[0].data;
+      this.tab = res[1].data;
+    });
   },
   onPageScroll(e) {
     this.rect = e.scrollTop;

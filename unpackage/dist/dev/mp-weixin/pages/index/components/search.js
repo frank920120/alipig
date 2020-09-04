@@ -151,7 +151,7 @@ var _default =
 {
   name: 'search',
   props: {
-    banners: Array },
+    banner: Array },
 
   data: function data() {
     return {};

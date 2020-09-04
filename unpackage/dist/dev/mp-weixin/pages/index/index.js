@@ -133,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Search = function Search() {__webpack_require__.e(/*! require.ensure | pages/index/components/search */ "pages/index/components/search").then((function () {return resolve(__webpack_require__(/*! ./components/search.vue */ 35));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Ticket = function Ticket() {__webpack_require__.e(/*! require.ensure | pages/index/components/ticket */ "pages/index/components/ticket").then((function () {return resolve(__webpack_require__(/*! ./components/ticket.vue */ 42));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Classify = function Classify() {__webpack_require__.e(/*! require.ensure | pages/index/components/classify */ "pages/index/components/classify").then((function () {return resolve(__webpack_require__(/*! ./components/classify.vue */ 49));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Content = function Content() {__webpack_require__.e(/*! require.ensure | pages/index/components/content */ "pages/index/components/content").then((function () {return resolve(__webpack_require__(/*! ./components/content.vue */ 56));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Article = function Article() {__webpack_require__.e(/*! require.ensure | pages/index/components/article */ "pages/index/components/article").then((function () {return resolve(__webpack_require__(/*! ./components/article.vue */ 63));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -149,6 +149,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+var _cloudfun = _interopRequireDefault(__webpack_require__(/*! ../../common/cloudfun.js */ 71));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var Search = function Search() {__webpack_require__.e(/*! require.ensure | pages/index/components/search */ "pages/index/components/search").then((function () {return resolve(__webpack_require__(/*! ./components/search.vue */ 35));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Ticket = function Ticket() {__webpack_require__.e(/*! require.ensure | pages/index/components/ticket */ "pages/index/components/ticket").then((function () {return resolve(__webpack_require__(/*! ./components/ticket.vue */ 42));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Classify = function Classify() {__webpack_require__.e(/*! require.ensure | pages/index/components/classify */ "pages/index/components/classify").then((function () {return resolve(__webpack_require__(/*! ./components/classify.vue */ 49));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Content = function Content() {__webpack_require__.e(/*! require.ensure | pages/index/components/content */ "pages/index/components/content").then((function () {return resolve(__webpack_require__(/*! ./components/content.vue */ 56));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Article = function Article() {__webpack_require__.e(/*! require.ensure | pages/index/components/article */ "pages/index/components/article").then((function () {return resolve(__webpack_require__(/*! ./components/article.vue */ 63));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 {
   components: {
     Search: Search,
@@ -162,23 +163,17 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       isFixed: false,
       rect: "",
       menutop: "",
-      banners: "",
+      banner: "",
       tab: "" };
 
   },
   created: function created() {var _this = this;
-    var db = wx.cloud.database();
-    var banner = db.collection("banner");
-    banner.
-    get().
-    then(function (res) {return _this.banners = res.data;}).
-    catch(function (err) {return console.log(err);});
-
-    var tab = db.collection("tab");
-    tab.
-    get().
-    then(function (res) {return _this.tab = res.data;}).
-    catch(function (err) {return console.log(err);});
+    var banner = (0, _cloudfun.default)("banner");
+    var tab = (0, _cloudfun.default)("tab");
+    Promise.all([banner, tab]).then(function (res) {
+      _this.banner = res[0].data;
+      _this.tab = res[1].data;
+    });
   },
   onPageScroll: function onPageScroll(e) {
     this.rect = e.scrollTop;
