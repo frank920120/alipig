@@ -114,42 +114,56 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _cloudfun = __webpack_require__(/*! ../../../common/cloudfun.js */ 71);
+var _vuex = __webpack_require__(/*! vuex */ 77); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // 引入攻略列表的数据库接口
-var _default = {
-  name: "tab",
-  props: {
-    isFixed: Boolean,
-    tab: Array },
-
-  data: function data() {
-    return {
-      num: 0 };
-
-  },
-  methods: {
-    handleTabClick: function handleTabClick(index) {
-      this.num = index;
-    } } };exports.default = _default;
+var _default = { name: "tab", props: { isFixed: Boolean, tab: Array }, data: function data() {return { num: 0 };}, methods: { handleTabClick: function handleTabClick(index, nav) {var _this = this;this.num = index;(0, _cloudfun.requestList)(nav).then(function (res) {_this.$store.dispatch("changeList", res.data);}).catch(function (err) {return console.log(err);});} } };exports.default = _default;
 
 /***/ }),
 

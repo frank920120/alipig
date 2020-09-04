@@ -4,7 +4,7 @@
     <Ticket />
     <Classify />
     <Content id="boxFixed" :isFixed="isFixed" :tab="tab" />
-    <Article />
+    <Article :Articleend="Articleend" />
   </view>
 </template>
 
@@ -14,7 +14,8 @@ import Ticket from "./components/ticket.vue";
 import Classify from "./components/classify.vue";
 import Content from "./components/content.vue";
 import Article from "./components/article.vue";
-import request from "../../common/cloudfun.js";
+import { request, requestList } from "../../common/cloudfun.js";
+import { mapState } from "vuex";
 export default {
   components: {
     Search,
@@ -30,15 +31,24 @@ export default {
       menutop: "",
       banner: "",
       tab: "",
+      Articleend: "",
     };
   },
   created() {
     let banner = request("banner");
     let tab = request("tab");
-    Promise.all([banner, tab]).then((res) => {
+    let listing = requestList("recommend");
+    Promise.all([banner, tab, listing]).then((res) => {
       this.banner = res[0].data;
       this.tab = res[1].data;
+      this.Articleend = res[2].data;
     });
+  },
+  computed: {
+    ...mapState(["list"]),
+    count() {
+      this.Articleend = this.list.listing;
+    },
   },
   onPageScroll(e) {
     this.rect = e.scrollTop;

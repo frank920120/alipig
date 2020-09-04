@@ -9,5 +9,13 @@ const request = (name) => {
       .catch((err) => reject(err));
   });
 };
-
-export default request;
+const requestList = (list) => {
+  return new Promise((resolve, reject) => {
+    const result = db.collection(list).limit(6);
+    result
+      .get()
+      .then((res) => resolve(res))
+      .catch((err) => reject(err));
+  });
+};
+export { request, requestList };

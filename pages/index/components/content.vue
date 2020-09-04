@@ -3,7 +3,11 @@
     <scroll-view scroll-x="true" class="scroll" scroll-with-animation="true">
       <view>
         <block v-for="(item, index) in tab" :key="index">
-          <view class="list-cont" :class="{active:index===num}" @click="handleTabClick(index)">
+          <view
+            class="list-cont"
+            :class="{active:index===num}"
+            @click="handleTabClick(index,item.nav)"
+          >
             <view>
               <text class="con-text-a" :class="{activeb:item.checked}">{{ item.name }}</text>
             </view>
@@ -18,6 +22,8 @@
 </template>
 
 <script>
+import { requestList } from "../../../common/cloudfun.js";
+import { mapMutations } from "vuex";
 // 引入攻略列表的数据库接口
 export default {
   name: "tab",
@@ -31,8 +37,13 @@ export default {
     };
   },
   methods: {
-    handleTabClick(index) {
+    handleTabClick(index, nav) {
       this.num = index;
+      requestList(nav)
+        .then((res) => {
+          this.$store.dispatch("changeList", res.data);
+        })
+        .catch((err) => console.log(err));
     },
   },
 };

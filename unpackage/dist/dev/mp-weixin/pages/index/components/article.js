@@ -141,41 +141,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 var _default =
 {
   name: "article",
-  // props:{
-  // 	Articleend:Array
-  // },
+  props: {
+    Articleend: Array },
+
   data: function data() {
-    return {
-      Articleend: [
-      {
-        image:
-        "http://vue.thexxdd.cn/media/goods/images/banner01_CxlIK3v.jpg",
-        title: "三亚租车",
-        list: "描述描述，描述描述，描述描述，描述描述，描述描述",
-        label: "法拉利租车",
-        price: 80,
-        buy: 90 },
-
-      {
-        image:
-        "http://vue.thexxdd.cn/media/goods/images/banner01_CxlIK3v.jpg",
-        title: "三亚租车",
-        list: "描述描述，描述描述，描述描述，描述描述，描述描述",
-        label: "法拉利租车",
-        price: 80,
-        buy: 90 },
-
-      {
-        image:
-        "http://vue.thexxdd.cn/media/goods/images/banner01_CxlIK3v.jpg",
-        title: "三亚租车",
-        list: "描述描述，描述描述，描述描述，描述描述，描述描述",
-        label: "法拉利租车",
-        price: 80,
-        buy: 90 }] };
-
-
-
+    return {};
   } };exports.default = _default;
 
 /***/ }),
