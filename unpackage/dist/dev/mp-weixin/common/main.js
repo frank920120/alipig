@@ -94,7 +94,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       console.error("请使用 2.2.3 或以上的基础库以使用云能力");
     } else {
       wx.cloud.init({
-        env: "travel-lwj3q",
+        env: "ali-app-i1r7l",
         traceUser: true });
 
     }

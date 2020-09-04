@@ -150,20 +150,11 @@ __webpack_require__.r(__webpack_exports__);
 var _default =
 {
   name: 'search',
-  // props: {
-  // 	banner: Array
-  // },
+  props: {
+    banners: Array },
+
   data: function data() {
-    return {
-      banner: [{
-        image: 'cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/banners/bannera.webp' },
-
-      {
-        image: 'cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/banners/bannera.webp' },
-
-      {
-        image: 'cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/banners/bannera.webp' }] };
-
+    return {};
 
 
   },

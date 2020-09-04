@@ -133,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Search = function Search() {__webpack_require__.e(/*! require.ensure | pages/index/components/search */ "pages/index/components/search").then((function () {return resolve(__webpack_require__(/*! ./components/search.vue */ 17));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Ticket = function Ticket() {__webpack_require__.e(/*! require.ensure | pages/index/components/ticket */ "pages/index/components/ticket").then((function () {return resolve(__webpack_require__(/*! ./components/ticket.vue */ 44));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Classify = function Classify() {__webpack_require__.e(/*! require.ensure | pages/index/components/classify */ "pages/index/components/classify").then((function () {return resolve(__webpack_require__(/*! ./components/classify.vue */ 52));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Content = function Content() {__webpack_require__.e(/*! require.ensure | pages/index/components/content */ "pages/index/components/content").then((function () {return resolve(__webpack_require__(/*! ./components/content.vue */ 60));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Article = function Article() {__webpack_require__.e(/*! require.ensure | pages/index/components/article */ "pages/index/components/article").then((function () {return resolve(__webpack_require__(/*! ./components/article.vue */ 68));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Search = function Search() {__webpack_require__.e(/*! require.ensure | pages/index/components/search */ "pages/index/components/search").then((function () {return resolve(__webpack_require__(/*! ./components/search.vue */ 35));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Ticket = function Ticket() {__webpack_require__.e(/*! require.ensure | pages/index/components/ticket */ "pages/index/components/ticket").then((function () {return resolve(__webpack_require__(/*! ./components/ticket.vue */ 42));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Classify = function Classify() {__webpack_require__.e(/*! require.ensure | pages/index/components/classify */ "pages/index/components/classify").then((function () {return resolve(__webpack_require__(/*! ./components/classify.vue */ 49));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Content = function Content() {__webpack_require__.e(/*! require.ensure | pages/index/components/content */ "pages/index/components/content").then((function () {return resolve(__webpack_require__(/*! ./components/content.vue */ 56));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Article = function Article() {__webpack_require__.e(/*! require.ensure | pages/index/components/article */ "pages/index/components/article").then((function () {return resolve(__webpack_require__(/*! ./components/article.vue */ 63));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -161,8 +161,17 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     return {
       isFixed: false,
       rect: "",
-      menutop: "" };
+      menutop: "",
+      banners: "" };
 
+  },
+  created: function created() {var _this = this;
+    var db = wx.cloud.database();
+    var banner = db.collection("banner");
+    banner.
+    get().
+    then(function (res) {return _this.banners = res.data;}).
+    catch(function (err) {return console.log(err);});
   },
   onPageScroll: function onPageScroll(e) {
     this.rect = e.scrollTop;
@@ -172,11 +181,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       this.isFixed = false;
     }
   },
-  onLoad: function onLoad() {var _this = this;
+  onLoad: function onLoad() {var _this2 = this;
     var query = wx.createSelectorQuery();
     query.select("#boxFixed").boundingClientRect();
     query.exec(function (res) {
-      _this.menutop = res[0].top - 20;
+      _this2.menutop = res[0].top - 20;
     });
   } };exports.default = _default;
 

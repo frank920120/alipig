@@ -1,6 +1,6 @@
 <template>
   <view>
-    <Search />
+    <Search :banners="banners" />
     <Ticket />
     <Classify />
     <Content id="boxFixed" :isFixed="isFixed" />
@@ -27,7 +27,16 @@ export default {
       isFixed: false,
       rect: "",
       menutop: "",
+      banners: "",
     };
+  },
+  created() {
+    const db = wx.cloud.database();
+    const banner = db.collection("banner");
+    banner
+      .get()
+      .then((res) => (this.banners = res.data))
+      .catch((err) => console.log(err));
   },
   onPageScroll(e) {
     this.rect = e.scrollTop;
