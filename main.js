@@ -7,6 +7,10 @@ App.mpType = "app";
 
 import loader from "./element/loading.vue";
 Vue.component("load-list", loader);
+import noData from "./element/noData.vue";
+Vue.component("no-data", noData);
+import homeload from "./element/homeload.vue";
+Vue.component("home-load", homeload);
 const app = new Vue({
   ...App,
   store,

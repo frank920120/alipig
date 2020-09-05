@@ -39,6 +39,8 @@
     ]
   },
   "usingComponents": {
-    "load-list": "/element/loading"
+    "load-list": "/element/loading",
+    "no-data": "/element/noData",
+    "home-load": "/element/homeload"
   }
 }

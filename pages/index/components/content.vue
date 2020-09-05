@@ -34,13 +34,20 @@ export default {
   data() {
     return {
       num: 0,
+      pageid: 0,
     };
   },
   methods: {
     handleTabClick(index, nav) {
       this.num = index;
+      let navData = {
+        nav,
+        pageId: this.pageid,
+      };
       this.$store.commit("setLoading", true);
-      requestList(nav)
+      this.$store.commit("setNavData", navData);
+
+      requestList(nav, this.pageid)
         .then((res) => {
           this.$store.commit("setLists", res.data);
           this.$store.commit("setLoading", false);

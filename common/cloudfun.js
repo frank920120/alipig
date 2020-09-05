@@ -9,9 +9,10 @@ const request = (name) => {
       .catch((err) => reject(err));
   });
 };
-const requestList = (list) => {
+const requestList = (list, pageid) => {
+  console.log(pageid);
   return new Promise((resolve, reject) => {
-    const result = db.collection(list).limit(6);
+    const result = db.collection(list).limit(6).skip(pageid);
     result
       .get()
       .then((res) => resolve(res))

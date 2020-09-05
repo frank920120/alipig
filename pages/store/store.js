@@ -10,9 +10,14 @@ const list = {
 const navLoading = {
   loadingList: "",
 };
+const navData = {
+  nav: "recommend",
+  pageId: 0,
+};
 const state = {
   list,
   navLoading,
+  navData,
 };
 
 const store = new Vuex.Store({
@@ -23,6 +28,9 @@ const store = new Vuex.Store({
     },
     setLoading(state, loading) {
       state.navLoading = { loadingList: loading };
+    },
+    setNavData(state, navData) {
+      state.navData = navData;
     },
   },
 });

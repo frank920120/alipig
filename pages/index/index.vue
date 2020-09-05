@@ -6,6 +6,8 @@
     <Content id="boxFixed" :isFixed="isFixed" :tab="tab" />
     <load-list v-if="loadingList"></load-list>
     <Article :Articleend="Articleend" v-if="!loadingList" />
+    <home-load v-if="homeload"></home-load>
+    <no-data v-if="nodata"></no-data>
   </view>
 </template>
 
@@ -34,27 +36,36 @@ export default {
       tab: "",
       Articleend: "",
       loadingList: "true",
+      pageid: 0,
+      nav: "",
+      nodata: false,
+      homeload: true,
     };
   },
   created() {
     let banner = request("banner");
     let tab = request("tab");
-    let listing = requestList("recommend");
+    let listing = requestList("recommend", this.pageid);
     this.loadingList = true;
     Promise.all([banner, tab, listing]).then((res) => {
       this.banner = res[0].data;
       this.tab = res[1].data;
       this.Articleend = res[2].data;
       this.loadingList = false;
+      this.homeload = false;
     });
   },
   computed: {
-    ...mapState(["list", "navLoading"]),
+    ...mapState(["list", "navLoading", "navData"]),
     count() {
       this.Articleend = this.list.listing;
     },
     countLoading() {
       this.loadingList = this.navLoading.loadingList;
+    },
+    countNav() {
+      this.nav = this.navData.nav;
+      this.pageid = this.navData.pageId;
     },
   },
   onPageScroll(e) {
@@ -64,6 +75,17 @@ export default {
     } else {
       this.isFixed = false;
     }
+  },
+  onReachBottom() {
+    this.pageid += 6;
+    let listing = requestList(this.nav, this.pageid);
+    listing.then((res) => {
+      if (res.data.length == 0) {
+        this.nodata = true;
+      } else {
+        this.Articleend = [...this.Articleend, ...res.data];
+      }
+    });
   },
   onLoad() {
     const query = wx.createSelectorQuery();

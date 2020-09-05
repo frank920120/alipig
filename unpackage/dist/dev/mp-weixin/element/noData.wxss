@@ -1,0 +1,14 @@
+
+.nodata image.data-v-7414558c {
+  width: 200rpx;
+  height: 200rpx;
+}
+.nodata text.data-v-7414558c {
+  display: block;
+  font-size: 30rpx;
+  color: rgb(153, 153, 153);
+}
+.nodata.data-v-7414558c {
+  text-align: center;
+}
+
