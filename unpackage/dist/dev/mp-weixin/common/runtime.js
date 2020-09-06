@@ -104,11 +104,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"element/homeload":1,"element/loading":1,"element/noData":1,"pages/index/components/article":1,"pages/index/components/classify":1,"pages/index/components/content":1,"pages/index/components/search":1,"pages/index/components/ticket":1};
+/******/ 		var cssChunks = {"element/homeload":1,"element/loading":1,"element/noData":1,"pages/index/components/article":1,"pages/index/components/classify":1,"pages/index/components/content":1,"pages/index/components/search":1,"pages/index/components/ticket":1,"pages/strategy/components/address":1,"pages/strategy/components/content":1,"pages/strategy/components/locality":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"element/homeload":"element/homeload","element/loading":"element/loading","element/noData":"element/noData","pages/index/components/article":"pages/index/components/article","pages/index/components/classify":"pages/index/components/classify","pages/index/components/content":"pages/index/components/content","pages/index/components/search":"pages/index/components/search","pages/index/components/ticket":"pages/index/components/ticket"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"element/homeload":"element/homeload","element/loading":"element/loading","element/noData":"element/noData","pages/index/components/article":"pages/index/components/article","pages/index/components/classify":"pages/index/components/classify","pages/index/components/content":"pages/index/components/content","pages/index/components/search":"pages/index/components/search","pages/index/components/ticket":"pages/index/components/ticket","pages/strategy/components/address":"pages/strategy/components/address","pages/strategy/components/content":"pages/strategy/components/content","pages/strategy/components/locality":"pages/strategy/components/locality"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

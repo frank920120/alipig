@@ -1,22 +1,27 @@
 <template>
-	<view>
-		strategy
-	</view>
+  <view>
+    <Address />
+    <Locality />
+    <Content />
+  </view>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				
-			}
-		},
-		methods: {
-			
-		}
-	}
+import address from "./components/address.vue";
+import content from "./components/content.vue";
+import locality from "./components/locality.vue";
+export default {
+  data() {
+    return {};
+  },
+  components: {
+    address,
+    content,
+    locality,
+  },
+  methods: {},
+};
 </script>
 
 <style>
-
 </style>

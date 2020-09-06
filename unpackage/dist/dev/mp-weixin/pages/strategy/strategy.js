@@ -128,19 +128,27 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var address = function address() {__webpack_require__.e(/*! require.ensure | pages/strategy/components/address */ "pages/strategy/components/address").then((function () {return resolve(__webpack_require__(/*! ./components/address.vue */ 103));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var content = function content() {__webpack_require__.e(/*! require.ensure | pages/strategy/components/content */ "pages/strategy/components/content").then((function () {return resolve(__webpack_require__(/*! ./components/content.vue */ 110));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var locality = function locality() {__webpack_require__.e(/*! require.ensure | pages/strategy/components/locality */ "pages/strategy/components/locality").then((function () {return resolve(__webpack_require__(/*! ./components/locality.vue */ 117));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
 {
   data: function data() {
     return {};
-
-
   },
+  components: {
+    address: address,
+    content: content,
+    locality: locality },
+
   methods: {} };exports.default = _default;
 
 /***/ })

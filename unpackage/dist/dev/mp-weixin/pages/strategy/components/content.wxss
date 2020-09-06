@@ -1,0 +1,50 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @import "../../../common/uni.css"; */
+/* 用户 */
+.userinfo image.data-v-1d06aeb3{width: 50rpx; height: 50rpx; border-radius: 50rpx;}
+.userinfo text.data-v-1d06aeb3{padding-left: 20rpx;}
+.userinfo.data-v-1d06aeb3{padding-top: 20rpx;}
+.newing.data-v-1d06aeb3{padding-bottom: 30rpx;}
+
