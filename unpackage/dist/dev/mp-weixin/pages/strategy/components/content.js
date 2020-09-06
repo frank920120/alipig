@@ -114,7 +114,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -141,16 +141,60 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 var _default =
 {
-  name: 'cont',
+  name: "cont",
   props: {
-    localdata: Array },
-
+    // localdata:Array
+  },
   data: function data() {
-    return {};
+    return {
+      localdata: [
+      {
+        datainfo: {
+          staticimg: [
+          "cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/lists/a6.jpg",
+          "cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/lists/a6.jpg",
+          "cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/lists/a6.jpg"],
+
+          titledata: "2019-02-20",
+          tipsdata: "2020-01-20",
+          nickName: "frank" } },
+
+
+      {
+        datainfo: {
+          staticimg: [
+          "cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/lists/a6.jpg",
+          "cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/lists/a6.jpg",
+          "cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/lists/a6.jpg"],
+
+          titledata: "2019-02-20",
+          tipsdata: "2020-01-20",
+          nickName: "frank" } },
+
+
+      {
+        datainfo: {
+          staticimg: [
+          "cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/lists/a6.jpg",
+          "cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/lists/a6.jpg",
+          "cloud://ali-app-i1r7l.616c-ali-app-i1r7l-1301699426/lists/a6.jpg"],
+
+          titledata: "2019-02-20",
+          tipsdata: "2020-01-20",
+          nickName: "frank" } }] };
+
+
 
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    localCont: function localCont(id) {
+      console.log(id);
+      uni.navigateTo({
+        url: "../details/detalis?id=" + id });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

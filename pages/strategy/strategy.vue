@@ -3,6 +3,9 @@
     <Address />
     <Locality />
     <Content />
+    <view class="publish animated fadeInUp">
+      <image src="../../static/tab/fab.png" mode="widthFix" />
+    </view>
   </view>
 </template>
 
@@ -23,5 +26,18 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.publish image {
+  width: 120upx !important;
+  height: 100upx !important;
+  border-radius: 40upx;
+}
+.publish {
+  position: fixed;
+  bottom: 20upx;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+}
 </style>
