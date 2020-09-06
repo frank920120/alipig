@@ -1,9 +1,9 @@
 <template>
   <view>
-    <Address />
+    <Address :address="address" />
     <Locality />
     <Content />
-    <view class="publish animated fadeInUp">
+    <view class="publish animate__animated animate__fadeInUp">
       <image src="../../static/tab/fab.png" mode="widthFix" />
     </view>
   </view>
@@ -13,16 +13,31 @@
 import address from "./components/address.vue";
 import content from "./components/content.vue";
 import locality from "./components/locality.vue";
+import getLocationRequest from "../../common/list";
 export default {
   data() {
-    return {};
+    return {
+      address: "",
+    };
   },
   components: {
     address,
     content,
     locality,
   },
-  methods: {},
+  created() {
+    this.getLocation();
+  },
+  methods: {
+    async getLocation() {
+      try {
+        const res = await getLocationRequest();
+        this.address = res.result.ad_info.city;
+      } catch (error) {
+        this.address = "上海市";
+      }
+    },
+  },
 };
 </script>
 

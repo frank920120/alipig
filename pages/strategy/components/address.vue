@@ -6,7 +6,7 @@
 			</view>
 			<view class="address-list">
 				<view class="address-text">
-					<text class="words">address</text>
+					<text class="words">{{address}}</text>
 					<image src="../../../static/tab/jiantouxia.png" mode="widthFix"></image>
 				</view>
 				<text class="words-eng">hello</text>
@@ -26,7 +26,7 @@
 			address:String
 		},
 		methods:{
-		
+		   
 		},
 		
 		
