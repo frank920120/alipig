@@ -5,7 +5,7 @@
 				<image src="https://img.alicdn.com/bao/uploaded/i3/2200538386031/O1CN01UzXSiL1uQFCqHg9r1_!!2200538386031.jpg_400x400.jpg" mode="aspectFill"></image>
 			</view>
 			<view class="address-list">
-				<view class="address-text">
+				<view class="address-text" @click="chooseCity">
 					<text class="words">{{address}}</text>
 					<image src="../../../static/tab/jiantouxia.png" mode="widthFix"></image>
 				</view>
@@ -26,7 +26,11 @@
 			address:String
 		},
 		methods:{
-		   
+		   chooseCity(){
+			   uni.navigateTo({
+					url: '../city/city'
+			   });
+		   }
 		},
 		
 		

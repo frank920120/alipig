@@ -14,10 +14,15 @@ const navData = {
   nav: "recommend",
   pageId: 0,
 };
+
+const hotCities = {
+  name: "",
+};
 const state = {
   list,
   navLoading,
   navData,
+  hotCities,
 };
 
 const store = new Vuex.Store({
@@ -31,6 +36,9 @@ const store = new Vuex.Store({
     },
     setNavData(state, navData) {
       state.navData = navData;
+    },
+    setHotCity(state, hotcity) {
+      state.hotCities = { name: hotcity };
     },
   },
 });

@@ -13,7 +13,8 @@
 import address from "./components/address.vue";
 import content from "./components/content.vue";
 import locality from "./components/locality.vue";
-import getLocationRequest from "../../common/list";
+import { getLocation } from "../../common/list";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -25,13 +26,19 @@ export default {
     content,
     locality,
   },
-  created() {
-    this.getLocation();
+  computed: {
+    ...mapState(["hotCities"]),
+    countCity() {
+      this.address = this.hotCities.name;
+    },
+  },
+  onLoad() {
+    this.hotCities ? (this.address = this.hotCities.name) : this.getLocation();
   },
   methods: {
     async getLocation() {
       try {
-        const res = await getLocationRequest();
+        const res = await getLocation();
         this.address = res.result.ad_info.city;
       } catch (error) {
         this.address = "上海市";

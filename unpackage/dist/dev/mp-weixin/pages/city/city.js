@@ -92,10 +92,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var render = function () {}
-var staticRenderFns = []
-var recyclableRender
 var components
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+}
+var recyclableRender = false
+var staticRenderFns = []
+render._withStripped = true
 
 
 
@@ -125,58 +130,143 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator */ 27));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _list = __webpack_require__(/*! ../../common/list */ 135);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 {
   data: function data() {
-    return {};
-  } };exports.default = _default;
+    return {
+      city: [
+      {
+        name: "昆明市" },
+
+      {
+        name: "大理白族自治州" },
+
+      {
+        name: "北京市" },
+
+      {
+        name: "上海市" },
+
+      {
+        name: "广州市" },
+
+      {
+        name: "深圳市" },
+
+      {
+        name: "杭州市" }],
+
+
+      citynone: true,
+      citydata: "",
+      address: "",
+      searchInput: "" };
+
+  },
+  onReady: function onReady() {
+    this.getLocation();
+  },
+  watch: {
+    searchInput: function searchInput(val, oldval) {
+      this.getSuggestion();
+    } },
+
+  methods: {
+    clickCity: function clickCity() {
+      this.$store.commit("setHotCity", this.address);
+      this.routeCity();
+    },
+    hotCity: function hotCity(city) {
+      this.$store.commit("setHotCity", city);
+      this.routeCity();
+    },
+    routeCity: function routeCity() {
+      uni.switchTab({
+        url: "/pages/strategy/strategy" });
+
+    },
+    searchCity: function searchCity(e) {
+      this.citynone = false;
+    },
+    handleClose: function handleClose() {
+      this.citynone = true;
+      this.citydata = [];
+    },
+    handleSearch: function handleSearch(e) {var
+      value = e.target.value;
+      this.searchInput = value;
+    },
+    seekCity: function seekCity(city) {
+      this.$store.commit("setHotCity", city);
+      this.routeCity();
+    },
+    getSuggestion: function getSuggestion() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res, cityTitle, city;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.prev = 0;_context.next = 3;return (
+
+                  (0, _list.getSuggestion)(_this.searchInput));case 3:res = _context.sent;
+                console.log(res);
+                cityTitle = res.data.map(function (city) {return city.title;});
+                city = res.data[0].city;
+                _this.citydata = [city].concat(_toConsumableArray(cityTitle));_context.next = 13;break;case 10:_context.prev = 10;_context.t0 = _context["catch"](0);
+
+                console.log(_context.t0);case 13:case "end":return _context.stop();}}}, _callee, null, [[0, 10]]);}))();
+
+    },
+    getLocation: function getLocation() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.prev = 0;_context2.next = 3;return (
+
+                  (0, _list.getLocation)());case 3:res = _context2.sent;
+                _this2.address = res.result.ad_info.city;_context2.next = 10;break;case 7:_context2.prev = 7;_context2.t0 = _context2["catch"](0);
+
+                _this2.address = "上海市";case 10:case "end":return _context2.stop();}}}, _callee2, null, [[0, 7]]);}))();
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

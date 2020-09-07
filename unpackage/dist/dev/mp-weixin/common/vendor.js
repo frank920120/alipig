@@ -1744,10 +1744,15 @@ var navData = {
   nav: "recommend",
   pageId: 0 };
 
+
+var hotCities = {
+  name: "" };
+
 var state = {
   list: list,
   navLoading: navLoading,
-  navData: navData };
+  navData: navData,
+  hotCities: hotCities };
 
 
 var store = new _vuex.default.Store({
@@ -1761,6 +1766,9 @@ var store = new _vuex.default.Store({
     },
     setNavData: function setNavData(state, navData) {
       state.navData = navData;
+    },
+    setHotCity: function setHotCity(state, hotcity) {
+      state.hotCities = { name: hotcity };
     } } });var _default =
 
 
@@ -3521,7 +3529,7 @@ if (hadRuntime) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var QQMapWX = __webpack_require__(/*! ./qqmap-wx-jssdk */ 136);
+Object.defineProperty(exports, "__esModule", { value: true });exports.getSuggestion = exports.getLocation = void 0;var QQMapWX = __webpack_require__(/*! ./qqmap-wx-jssdk */ 136);
 var getLocation = function getLocation() {
   return new Promise(function (resolve, reject) {
     var qqmapsdk = new QQMapWX({
@@ -3536,9 +3544,24 @@ var getLocation = function getLocation() {
       } });
 
   });
-};var _default =
+};exports.getLocation = getLocation;
 
-getLocation;exports.default = _default;
+var getSuggestion = function getSuggestion(info) {
+  return new Promise(function (resolve, reject) {
+    var qqmapsdk = new QQMapWX({
+      key: "OMGBZ-3UXKS-3VAOX-6UBF3-H6HGH-44B3X" });
+
+    qqmapsdk.getSuggestion({
+      keyword: info,
+      success: function success(res) {
+        resolve(res);
+      },
+      fail: function fail(err) {
+        reject(err);
+      } });
+
+  });
+};exports.getSuggestion = getSuggestion;
 
 /***/ }),
 
