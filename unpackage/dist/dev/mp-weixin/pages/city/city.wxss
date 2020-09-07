@@ -1,0 +1,74 @@
+
+page{background: #ffffff;}
+		/* 搜索城市 */
+.margin-search{margin-bottom: 40rpx;}
+.city-search{
+		    height: 70rpx;
+			line-height: 70rpx;
+		    width: 100%;
+		    display: -webkit-box;
+		    display: -webkit-flex;
+		    display: flex;
+		    -webkit-box-orient: horizontal;
+		    -webkit-box-direction: normal;
+		    -webkit-flex-direction: row;
+		            flex-direction: row;
+			background:#f8f8f8;
+			border-radius: 50rpx;
+}
+.search-img{margin: auto 0 auto 20rpx; width: 40rpx; height: 40rpx;}
+.city-search input{
+				height: 70rpx;
+				line-height: 70rpx;
+		        width: 100%;
+		        font-size: 30rpx;
+				color: #666666;
+}
+.search-cont{display: -webkit-box;display: -webkit-flex;display: flex; -webkit-box-pack: justify; -webkit-justify-content: space-between; justify-content: space-between; height: 70rpx; -webkit-box-align: center; -webkit-align-items: center; align-items: center;
+					background: -webkit-linear-gradient(bottom, #ffe566 10%, #ffd300 100%);
+					background: linear-gradient(to top, #ffe566 10%, #ffd300 100%);
+					padding: 30rpx 20rpx;
+}
+.search-code image{width: 50rpx; height: 50rpx;}
+.search-code{width: 50rpx; height: 50rpx; padding: 0 15rpx;}
+		/* 定位城市 */
+.city-view image{width: 40rpx; height: 40rpx; padding-right: 20rpx;}
+.city-text{font-size: 30rpx; color: #3f3f3f;}
+.posit-city{display: -webkit-box;display: -webkit-flex;display: flex; -webkit-box-align: center; -webkit-align-items: center; align-items: center; padding-left: 35rpx;}
+.city-view{display: -webkit-box;display: -webkit-flex;display: flex; -webkit-box-align: center; -webkit-align-items: center; align-items: center;
+			background: #f7f7f7;
+			padding: 20rpx 10rpx;
+			margin: 0 20rpx;
+			border-radius: 6rpx;}
+		/* 热门城市 */
+.hot-city{font-size: 30rpx; color: #999999; margin: 50rpx 20rpx 0 20rpx;}
+.menu-block view {
+				background: #f7f7f7;
+				border-radius: 6rpx;
+				font-size: 27rpx;
+				color: #333333;
+				text-align: center;
+				padding: 15rpx;
+				margin: 20rpx;
+}
+.menu-block {
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: horizontal;
+				-webkit-box-direction: normal;
+				-webkit-flex-direction: row;
+				        flex-direction: row;
+				-webkit-box-pack: start;
+				-webkit-justify-content: flex-start;
+				        justify-content: flex-start;
+				-webkit-flex-wrap: wrap;
+				        flex-wrap: wrap;
+}
+		/* 搜索的结果 */
+.results text{display: block; font-size: 30rpx; color: #ee9900;}
+.results-city image{width: 40rpx; height: 40rpx; padding-right: 20rpx;}
+.results-city{display: -webkit-box;display: -webkit-flex;display: flex; -webkit-box-align: center; -webkit-align-items: center; align-items: center; border-bottom: 1rpx solid #e5e5e5;
+				padding: 20rpx 0;
+				margin: 0 20rpx;}
+
