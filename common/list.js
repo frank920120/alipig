@@ -22,6 +22,7 @@ const getSuggestion = function (info) {
     });
     qqmapsdk.getSuggestion({
       keyword: info,
+      filter: "category=景点",
       success: (res) => {
         resolve(res);
       },

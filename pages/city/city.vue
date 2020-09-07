@@ -5,7 +5,13 @@
       <view class="search-cont">
         <view class="city-search">
           <image src="../../static/tab/sousuo.svg" mode="widthFix" class="search-img" />
-          <input type="text" placeholder="发现你感兴趣的目的地" @focus="searchCity" @input="handleSearch" />
+          <input
+            type="text"
+            placeholder="发现你感兴趣的目的地"
+            :value="searchInput"
+            @focus="searchCity"
+            @input="handleSearch"
+          />
         </view>
         <view class="search-code" v-if="!citynone" @click="handleClose">
           <image src="../../static/tab/chaa.svg" mode="widthFix" />
@@ -106,6 +112,7 @@ export default {
     handleClose() {
       this.citynone = true;
       this.citydata = [];
+      this.searchInput = "";
     },
     handleSearch(e) {
       let { value } = e.target;

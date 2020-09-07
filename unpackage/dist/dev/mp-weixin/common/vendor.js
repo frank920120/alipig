@@ -3553,6 +3553,7 @@ var getSuggestion = function getSuggestion(info) {
 
     qqmapsdk.getSuggestion({
       keyword: info,
+      filter: "category=景点",
       success: function success(res) {
         resolve(res);
       },
