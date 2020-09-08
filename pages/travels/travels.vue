@@ -69,6 +69,7 @@
 
 <script>
 import { previewImage } from "../../common/list";
+
 export default {
   data() {
     return {
@@ -87,6 +88,8 @@ export default {
       tipsdata: "",
       titledata: "",
       topimg: [],
+      uploadvideos: false,
+      videos: "",
     };
   },
   methods: {
@@ -126,6 +129,33 @@ export default {
           //   });
         },
       });
+    },
+    uploadVideo() {
+      uni.showLoading({
+        title: "上传中",
+      });
+      uni
+        .chooseVideo({
+          count: 1,
+          sourceType: ["camera", "album"],
+          maxDuration: 20,
+        })
+        .then((res) => {
+          this.videos = res[1].tempFilePath;
+          this.uploadvideos = true;
+        })
+        .catch((err) => {
+          this.uploadvideos = false;
+          console.log(err);
+        })
+        .finally(() => {
+          uni.hideLoading();
+        });
+    },
+    // 删除视频
+    deleteVideo() {
+      this.videos = "";
+      this.uploadvideos = false;
     },
   },
 };
