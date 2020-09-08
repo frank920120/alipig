@@ -3,7 +3,7 @@
     <Address :address="address" />
     <Locality />
     <Content />
-    <view class="publish animate__animated animate__fadeInUp">
+    <view class="publish animate__animated animate__fadeInUp" @click="handlePublish">
       <image src="../../static/tab/fab.png" mode="widthFix" />
     </view>
   </view>
@@ -43,6 +43,11 @@ export default {
       } catch (error) {
         this.address = "上海市";
       }
+    },
+    handlePublish() {
+      uni.navigateTo({
+        url: "../travels/travels",
+      });
     },
   },
 };
