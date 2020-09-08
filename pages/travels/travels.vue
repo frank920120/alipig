@@ -68,6 +68,7 @@
 </template>
 
 <script>
+import { previewImage } from "../../common/list";
 export default {
   data() {
     return {
@@ -93,11 +94,16 @@ export default {
       this.num = index;
       console.log(name);
     },
-    preImage(index) {
-      console.log(index);
-      uni.previewImage({
-        urls: this.topimg[index],
-      });
+    async preImage(index) {
+      try {
+        const res = previewImage(index, this.topimg);
+        console.log("预览成功");
+      } catch (error) {
+        console.log("预览失败");
+      }
+    },
+    deleteImg(index) {
+      this.topimg = this.topimg.filter((img) => this.topimg[index] !== img);
     },
     uploadImg() {
       uni.chooseImage({

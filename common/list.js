@@ -33,4 +33,19 @@ const getSuggestion = function (info) {
   });
 };
 
-export { getLocation, getSuggestion };
+const previewImage = function (index, imageLists) {
+  return new Promise((resolve, reject) => {
+    uni
+      .previewImage({
+        current: index,
+        urls: imageLists,
+        longPressActions: {
+          itemList: ["发送给朋友", "保存图片", "收藏"],
+        },
+      })
+      .then((res) => resolve(res))
+      .catch((err) => reject(err));
+  });
+};
+
+export { getLocation, getSuggestion, previewImage };

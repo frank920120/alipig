@@ -3529,7 +3529,7 @@ if (hadRuntime) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getSuggestion = exports.getLocation = void 0;var QQMapWX = __webpack_require__(/*! ./qqmap-wx-jssdk */ 136);
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.previewImage = exports.getSuggestion = exports.getLocation = void 0;var QQMapWX = __webpack_require__(/*! ./qqmap-wx-jssdk */ 136);
 var getLocation = function getLocation() {
   return new Promise(function (resolve, reject) {
     var qqmapsdk = new QQMapWX({
@@ -3563,6 +3563,22 @@ var getSuggestion = function getSuggestion(info) {
 
   });
 };exports.getSuggestion = getSuggestion;
+
+var previewImage = function previewImage(index, imageLists) {
+  return new Promise(function (resolve, reject) {
+    uni.
+    previewImage({
+      current: index,
+      urls: imageLists,
+      longPressActions: {
+        itemList: ["发送给朋友", "保存图片", "收藏"] } }).
+
+
+    then(function (res) {return resolve(res);}).
+    catch(function (err) {return reject(err);});
+  });
+};exports.previewImage = previewImage;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
