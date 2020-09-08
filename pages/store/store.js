@@ -18,11 +18,20 @@ const navData = {
 const hotCities = {
   name: "",
 };
+
+const publishCities = {
+  name: "",
+};
+const currentPage = {
+  name: "",
+};
 const state = {
   list,
   navLoading,
   navData,
   hotCities,
+  publishCities,
+  currentPage,
 };
 
 const store = new Vuex.Store({
@@ -39,6 +48,13 @@ const store = new Vuex.Store({
     },
     setHotCity(state, hotcity) {
       state.hotCities = { name: hotcity };
+    },
+    setPublishedCity(state, publishedCity) {
+      state.publishCities = { name: publishedCity };
+    },
+    setCurrentPage(state, page) {
+      console.log(page);
+      state.currentPage = { name: page };
     },
   },
 });

@@ -52,6 +52,7 @@
 
 <script>
 import { getLocation, getSuggestion } from "../../common/list";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -82,10 +83,17 @@ export default {
       citydata: "",
       address: "",
       searchInput: "",
+      currentP: "",
     };
   },
   onReady() {
     this.getLocation();
+  },
+  computed: {
+    ...mapState(["currentPage"]),
+    countCurrentpage() {
+      this.currentP = this.currentPage.name;
+    },
   },
   watch: {
     searchInput(val, oldval) {
@@ -94,16 +102,20 @@ export default {
   },
   methods: {
     clickCity() {
-      this.$store.commit("setHotCity", this.address);
-      this.routeCity();
+      this.routeCity(this.address);
     },
     hotCity(city) {
-      this.$store.commit("setHotCity", city);
-      this.routeCity();
+      this.routeCity(city);
     },
-    routeCity() {
-      uni.switchTab({
-        url: `/pages/strategy/strategy`,
+    routeCity(city) {
+      console.log(this.currentP);
+      if (this.currentP == "pages/strategy/strategy") {
+        this.$store.commit("setHotCity", city);
+      } else {
+        this.$store.commit("setPublishedCity", city);
+      }
+      uni.navigateBack({
+        delta: 1,
       });
     },
     searchCity(e) {

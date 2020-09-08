@@ -19,6 +19,7 @@ export default {
   data() {
     return {
       address: "",
+      currentPage: "",
     };
   },
   components: {
@@ -33,7 +34,13 @@ export default {
     },
   },
   onLoad() {
-    this.hotCities ? (this.address = this.hotCities.name) : this.getLocation();
+    let page = getCurrentPages();
+    this.currentPage = page[0].route;
+    console.log(page);
+    this.$store.commit("setCurrentPage", this.currentPage);
+    this.hotCities.name
+      ? (this.address = this.hotCities.name)
+      : this.getLocation();
   },
   methods: {
     async getLocation() {

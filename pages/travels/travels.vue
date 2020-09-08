@@ -68,7 +68,8 @@
 </template>
 
 <script>
-import { previewImage } from "../../common/list";
+import { previewImage, getLocation } from "../../common/list";
+import { mapState } from "vuex";
 
 export default {
   data() {
@@ -90,7 +91,21 @@ export default {
       topimg: [],
       uploadvideos: false,
       videos: "",
+      address: "",
+      currentPage: "",
     };
+  },
+  onLoad() {
+    this.getLocation();
+    let page = getCurrentPages();
+    this.currentPage = page[1].route;
+    this.$store.commit("setCurrentPage", this.currentPage);
+  },
+  computed: {
+    ...mapState(["publishCities"]),
+    countCity() {
+      this.address = this.publishCities.name;
+    },
   },
   methods: {
     menubtn(index, name) {
@@ -99,7 +114,7 @@ export default {
     },
     async preImage(index) {
       try {
-        const res = previewImage(index, this.topimg);
+        const res = await previewImage(index, this.topimg);
         console.log("预览成功");
       } catch (error) {
         console.log("预览失败");
@@ -156,6 +171,20 @@ export default {
     deleteVideo() {
       this.videos = "";
       this.uploadvideos = false;
+    },
+    async getLocation() {
+      try {
+        const res = await getLocation();
+        this.address = res.result.ad_info.city;
+      } catch (error) {
+        this.address = "上海市";
+        console.log("定位失败");
+      }
+    },
+    chooseCity() {
+      uni.navigateTo({
+        url: "../city/city",
+      });
     },
   },
 };
