@@ -63,7 +63,7 @@
     </view>
 
     <!-- 发布 -->
-    <view class="release" @click="suBmitd()">发布</view>
+    <view class="release" @click="submit()">发布</view>
   </view>
 </template>
 
@@ -93,6 +93,7 @@ export default {
       videos: "",
       address: "",
       currentPage: "",
+      submitData: { category: "景点" },
     };
   },
   onLoad() {
@@ -111,6 +112,7 @@ export default {
     menubtn(index, name) {
       this.num = index;
       console.log(name);
+      this.submitData = { ...this.submitData, category: name };
     },
     async preImage(index) {
       try {
@@ -185,6 +187,17 @@ export default {
       uni.navigateTo({
         url: "../city/city",
       });
+    },
+    submit() {
+      this.submitData = {
+        ...this.submitData,
+        tipsdata: this.tipsdata,
+        titledata: this.titledata,
+        topimg: this.topimg,
+        video: this.video,
+        location: this.address,
+      };
+      console.log(this.submitData);
     },
   },
 };

@@ -224,7 +224,8 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function _interopRequireDefault(
       uploadvideos: false,
       videos: "",
       address: "",
-      currentPage: "" };
+      currentPage: "",
+      submitData: { category: "景点" } };
 
   },
   onLoad: function onLoad() {
@@ -243,6 +244,7 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function _interopRequireDefault(
     menubtn: function menubtn(index, name) {
       this.num = index;
       console.log(name);
+      this.submitData = _objectSpread({}, this.submitData, { category: name });
     },
     preImage: function preImage(index) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.prev = 0;_context.next = 3;return (
 
@@ -317,6 +319,17 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function _interopRequireDefault(
       uni.navigateTo({
         url: "../city/city" });
 
+    },
+    submit: function submit() {
+      this.submitData = _objectSpread({},
+      this.submitData, {
+        tipsdata: this.tipsdata,
+        titledata: this.titledata,
+        topimg: this.topimg,
+        video: this.video,
+        location: this.address });
+
+      console.log(this.submitData);
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
