@@ -64,13 +64,18 @@
 
     <!-- 发布 -->
     <view class="release" @click="submit()">发布</view>
+    <HMmessages
+      ref="HMmessages"
+      @complete="HMmessages = $refs.HMmessages"
+      @clickMessage="clickMessage"
+    ></HMmessages>
   </view>
 </template>
 
 <script>
 import { previewImage, getLocation } from "../../common/list";
 import { mapState } from "vuex";
-
+import HMmessages from "@/components/HM-messages/HM-messages.vue";
 export default {
   data() {
     return {
@@ -96,6 +101,7 @@ export default {
       submitData: { category: "景点" },
     };
   },
+  components: { HMmessages },
   onLoad() {
     this.getLocation();
     let page = getCurrentPages();
@@ -189,6 +195,16 @@ export default {
       });
     },
     submit() {
+      if (this.titledata == "") {
+        let tip = "标题必填";
+        this.proMpt(tip);
+      } else if (this.tipsdata == "") {
+        let tip = "描述必填";
+        this.proMpt(tip);
+      } else if (this.topimg.length < 3) {
+        let tip = "上传的图片不少于三张";
+        this.proMpt(tip);
+      }
       this.submitData = {
         ...this.submitData,
         tipsdata: this.tipsdata,
@@ -198,6 +214,14 @@ export default {
         location: this.address,
       };
       console.log(this.submitData);
+    },
+    proMpt(tip) {
+      this.HMmessages.show(tip, {
+        icon: "error",
+        iconColor: "#ffffff",
+        fontColor: "#ffffff",
+        background: "rgba(102,0,51,0.8)",
+      });
     },
   },
 };
