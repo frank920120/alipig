@@ -195,6 +195,7 @@ export default {
       });
     },
     submit() {
+      this.userInfo();
       if (this.titledata == "") {
         let tip = "标题必填";
         this.proMpt(tip);
@@ -204,6 +205,8 @@ export default {
       } else if (this.topimg.length < 3) {
         let tip = "上传的图片不少于三张";
         this.proMpt(tip);
+      } else {
+        this.userInfo();
       }
       this.submitData = {
         ...this.submitData,
@@ -213,7 +216,38 @@ export default {
         video: this.video,
         location: this.address,
       };
-      console.log(this.submitData);
+    },
+    userInfo() {
+      let db = wx.cloud.database();
+      let users = db.collection("user");
+      users
+        .get()
+        .then((res) => {
+          console.log(res);
+          // length == 0说明用户没有登录
+          if (res.data.length == 0) {
+            console.log("没有登录");
+            // 弹出模态框
+            let message = "请登录后再操作";
+            this.$nextTick(() => {
+              //dom更新循环结束之后的延迟回调
+              this.$refs.mon.init(message);
+            });
+          } else {
+            console.log("已经登陆");
+            // 取到用户头像，昵称，openid
+            let usermen = res.data[0];
+            this.avatarUrl = usermen.avatarUrl;
+            this.nickName = usermen.nickName;
+            this.openid = usermen._openid;
+            // 可以上传用户提交的数据到数据库
+            this.relend = true;
+            this.userdata();
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     proMpt(tip) {
       this.HMmessages.show(tip, {

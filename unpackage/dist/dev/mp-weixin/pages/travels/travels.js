@@ -332,6 +332,7 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function _interopRequireDefault(
 
     },
     submit: function submit() {
+      this.userInfo();
       if (this.titledata == "") {
         var tip = "标题必填";
         this.proMpt(tip);
@@ -341,6 +342,8 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function _interopRequireDefault(
       } else if (this.topimg.length < 3) {
         var _tip2 = "上传的图片不少于三张";
         this.proMpt(_tip2);
+      } else {
+        this.userInfo();
       }
       this.submitData = _objectSpread({},
       this.submitData, {
@@ -350,7 +353,38 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function _interopRequireDefault(
         video: this.video,
         location: this.address });
 
-      console.log(this.submitData);
+    },
+    userInfo: function userInfo() {var _this6 = this;
+      var db = wx.cloud.database();
+      var users = db.collection("user");
+      users.
+      get().
+      then(function (res) {
+        console.log(res);
+        // length == 0说明用户没有登录
+        if (res.data.length == 0) {
+          console.log("没有登录");
+          // 弹出模态框
+          var message = "请登录后再操作";
+          _this6.$nextTick(function () {
+            //dom更新循环结束之后的延迟回调
+            _this6.$refs.mon.init(message);
+          });
+        } else {
+          console.log("已经登陆");
+          // 取到用户头像，昵称，openid
+          var usermen = res.data[0];
+          _this6.avatarUrl = usermen.avatarUrl;
+          _this6.nickName = usermen.nickName;
+          _this6.openid = usermen._openid;
+          // 可以上传用户提交的数据到数据库
+          _this6.relend = true;
+          _this6.userdata();
+        }
+      }).
+      catch(function (err) {
+        console.log(err);
+      });
     },
     proMpt: function proMpt(tip) {
       this.HMmessages.show(tip, {
